@@ -1,0 +1,93 @@
+@charset "utf-8";
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+body {
+	background-color: #efefef;
+}
+main {
+	width: 100%;
+	padding: 4vw;
+	section {
+		width: 100%;
+		//순서상으로는 item-sizer가 첫번쨰 박스이지만
+		//이 item-sizer는 사용하는 박스로 만들지 않았습니다
+		//최소 박스의 넓이값을 설정하기 위한 용도
+		//따라서 높이값을 설정하지 않고 display none을 하지 않고도
+		//숨기는것
+		.item-sizer {
+			width: 25%;
+			height: 0px;
+			opacity: 0;
+		}
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.item {
+			width: 25%;
+			height: 30vh;
+			float: left;
+			padding: 15px;
+			&:nth-of-type(2) {
+				width: 50%;
+				height: 60vh;
+			}
+			&:nth-of-type(3) {
+				width: 50%;
+			}
+			&:nth-of-type(5) {
+				height: 60vh;
+			}
+			&:nth-of-type(7) {
+				width: 50%;
+			}
+			.inner {
+				width: 100%;
+				height: 100%;
+				background-color: #fff;
+				box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	main {
+		section {
+			.item-sizer {
+				width: calc(100% / 3);
+			}
+			.item {
+				width: calc(100% / 3);
+				height: 25vh;
+				&:nth-of-type(2) {
+					width: calc((100% / 3) * 2);
+					height: 50vh;
+				}
+				&:nth-of-type(3) {
+					width: calc(100% / 3);
+					height: 50vh;
+				}
+				&:nth-of-type(5) {
+					width: calc((100% / 3) * 2);
+					height: 50vh;
+				}
+				&:nth-of-type(7) {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
